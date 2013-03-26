@@ -1,0 +1,66 @@
+<div id="app-editor" class="expanded">
+
+  <div id="app-controls">
+    <div id="app-controls-header">
+      <div class="title">Weblayer</div>
+      <div class="devices">
+        <a class="active" href="#" title="Desktop size preview"><i class="icon-desktop"></i></a>
+        <a href="#" title="Tablet size preview"><i class="icon-tablet"></i></a>
+        <a href="#" title="Smartphone size preview"><i class="icon-phone"></i></a>
+      </div>
+    </div>
+
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active first"><a href="#app-controls-views" data-toggle="tab">Views</a></li>
+        <li><a href="#app-controls-objects" data-toggle="tab">Data Objects</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="app-controls-views">
+          <select class="input-xlarge">
+            <option value="home">Home</option>
+            <option value="products">Products List</option>
+            <option value="product/{id}">Single Product</option>
+            <option value="product/{id}/edit">Product Edit</option>
+            <option value="">+ Create A View</option>
+          </select>
+        </div>
+
+        <div class="tab-pane" id="app-controls-objects">
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Product
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                  Anim pariatur cliche...
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  Customer
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Anim pariatur cliche...
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-preview">
+    <iframe></iframe>
+  </div>
+</div>
