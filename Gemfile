@@ -41,3 +41,17 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'font-awesome-sass-rails'
 gem 'backbone-on-rails'
 
+group :development, :test do
+  gem 'minitest-spec-rails'
+  gem 'capybara_minitest_spec'
+  gem 'capybara-webkit'
+end
+
+group :development do
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'wdm', :platforms => [:mswin, :mingw], :require => false
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
