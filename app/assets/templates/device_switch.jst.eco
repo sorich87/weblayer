@@ -1,0 +1,4 @@
+<a data-device="pc" class="active" href="#" title="PC size preview"><i class="icon-laptop"></i></a>
+<a data-device="tablet" href="#" title="Tablet size preview"><i class="icon-tablet"></i></a>
+<a data-device="phone" href="#" title="Smartphone size preview"><i class="icon-mobile-phone"></i></a>
+
