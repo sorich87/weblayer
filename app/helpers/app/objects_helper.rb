@@ -1,0 +1,2 @@
+module App::ObjectsHelper
+end

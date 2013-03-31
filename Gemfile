@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'font-awesome-sass-rails'
 gem 'backbone-on-rails'
+gem 'rabl'
+gem 'oj'
 
 group :development, :test do
   gem 'minitest-spec-rails'

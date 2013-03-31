@@ -1,4 +1,12 @@
 Weblayer::Application.routes.draw do
+  scope(
+    module: 'app',
+    defaults: {format: 'json'},
+    constraints: {format: /json/}
+  ) do
+    resources :objects, only: [:index, :show, :create, :update, :destroy]
+  end
+
   #get "editor/index"
 
   # The priority is based upon order of creation: first created -> highest priority.
