@@ -47,6 +47,7 @@ group :development, :test do
   gem 'minitest-spec-rails'
   gem 'capybara_minitest_spec'
   gem 'capybara-webkit'
+  gem 'konacha'
 end
 
 group :development do
@@ -55,5 +56,6 @@ group :development do
   gem 'wdm', :platforms => [:mswin, :mingw], :require => false
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-konacha'
 end
 

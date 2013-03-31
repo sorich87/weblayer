@@ -1,5 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+require 'capybara-webkit'
 
 guard 'minitest' do
   watch(%r|^test/(.*)\/?(.*)_test\.rb|)
@@ -10,3 +11,7 @@ guard 'minitest' do
   watch(%r|^app/models/(.*)\/?(.*)\.rb|)      { |m| "test/models/#{m[1]}_test.rb" }
 end
 
+guard :konacha, spec_dir: 'test/javascripts', driver: :webkit do
+  watch(%r{^app/assets/javascripts/(.*)\.js(\.coffee)?$}) { |m| "#{m[1]}_test.js" }
+  watch(%r{^test/javascripts/.+_test(\.js|\.js\.coffee)$})
+end
