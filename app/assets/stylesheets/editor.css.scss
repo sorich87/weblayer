@@ -96,14 +96,22 @@
   .title {
     float: left;
   }
-  .device-switch {
-    float: right;
+  .devices {
     font-size: 1.6em;
+    text-align: right;
 
+    li {
+      display: inline-block;
+    }
+    li [class^="icon-"],
+    li [class*=" icon-"] {
+      width: auto;
+      padding: 0 0 0 12px;
+    }
     a {
       color: $grayLight;
     }
-    a.active,
+    li.active a,
     a:hover,
     a:focus {
       text-decoration: none;

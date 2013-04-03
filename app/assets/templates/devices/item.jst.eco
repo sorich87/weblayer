@@ -1,0 +1,3 @@
+<a href="#" title="<%= @device.get('title') %>">
+  <i class="icon-<%= @device.get('name') %>"></i>
+</a>
