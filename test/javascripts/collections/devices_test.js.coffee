@@ -20,6 +20,5 @@ suite 'Weblayer.Collections.Devices', ->
     assert.equal @collection.active().get('title'), 'Active'
 
   test 'ensures only one device is active', ->
-    @collection.add(active: true)
-    @collection.add(active: true)
+    @collection.findWhere(active: false).set('active', true)
     assert.lengthOf @collection.where(active: true), 1
