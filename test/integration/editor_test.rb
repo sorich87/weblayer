@@ -28,5 +28,15 @@ class EditorTest < ActionDispatch::IntegrationTest
       assert_not_equal old_width, new_width
     end
   end
+
+  describe 'the object form' do
+    it 'adds new objects' do
+      within('.app-objects-new') do
+        find('input[name=title]').set('Test')
+        find('button').click
+      end
+      assert find('#app-controls-objects .accordion').has_text?('Test')
+    end
+  end
 end
 

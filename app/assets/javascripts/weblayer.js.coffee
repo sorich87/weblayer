@@ -25,6 +25,7 @@ window.Weblayer =
 
   initialize: (data) ->
     @devices = new @Collections.Devices(@devices)
+    @objects = new @Collections.Objects(data.objects)
 
     devicesIndexView = new @Views.DevicesIndex
       collection: @devices
@@ -32,3 +33,6 @@ window.Weblayer =
     devicesIndexView.render()
       .$el.appendTo("#app-controls-header")
 
+    $('#app-controls-objects')
+      .append((new @Views.ObjectsIndex(collection: @objects)).render().$el)
+      .append((new @Views.ObjectsNew(collection: @objects)).render().$el)

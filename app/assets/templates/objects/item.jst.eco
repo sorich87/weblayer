@@ -1,0 +1,11 @@
+<div class="accordion-heading">
+  <a class="accordion-toggle" data-toggle="collapse"
+    data-parent="#app-objects-index" href="#<%= @object.get('class_name') %>">
+    <%= @object.get('title') %>
+  </a>
+</div>
+<div id="<%= @object.get('class_name') %>" class="accordion-body collapse">
+  <div class="accordion-inner">
+    Fields
+  </div>
+</div>

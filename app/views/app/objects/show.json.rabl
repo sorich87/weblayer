@@ -1,2 +1,2 @@
 object @app_object
-attributes :id, :title, :fields
+attributes :id, :title, :class_name, :fields

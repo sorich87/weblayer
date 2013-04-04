@@ -1,0 +1,2 @@
+<input type="text" class="span2" placeholder="New Object" name="title" />
+<button type="submit" class="btn"><i class="icon-plus"></i> Add Object</button>

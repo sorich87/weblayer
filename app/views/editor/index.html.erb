@@ -23,32 +23,6 @@
         </div>
 
         <div class="tab-pane" id="app-controls-objects">
-          <div class="accordion" id="accordion2">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Product
-                </a>
-              </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  Customer
-                </a>
-              </div>
-              <div id="collapseTwo" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -62,4 +36,15 @@
 
 <script type="text/json" id="data">
 {"objects": <%= @app_objects.to_json %>}
+</script>
+
+<script type="text/javascript">
+$(function () {
+  var $div = $('<div></div>'),
+  data;
+  $div.html($('#data').text());
+  data = JSON.parse($div.text());
+
+  Weblayer.initialize(data);
+});
 </script>
