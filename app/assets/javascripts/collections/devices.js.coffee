@@ -3,12 +3,12 @@ class Weblayer.Collections.Devices extends Backbone.Collection
   model: Weblayer.Models.Device
 
   initialize: ->
-    @on('all', @ensureOneActive)
+    @on('change', @ensureOneActive)
 
   active: ->
     @findWhere(active: true) || @first()
 
-  ensureOneActive: (event, changed) =>
+  ensureOneActive: (changed) =>
     if changed.get('active')
       @each (device) =>
         if device.cid != changed.cid
