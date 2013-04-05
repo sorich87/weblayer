@@ -11,6 +11,10 @@ class Weblayer.Views.ObjectsIndex extends Backbone.View
   render: =>
     @$el.empty()
     @collection.each (object) =>
-      (new Weblayer.Views.ObjectItem(model: object)).render().$el
+      @subView(object).render().$el
         .appendTo(@$el)
     @
+
+  subView: (object) =>
+    @subViews ||= {}
+    @subViews[object.cid] ||= new Weblayer.Views.ObjectItem(model: object)
