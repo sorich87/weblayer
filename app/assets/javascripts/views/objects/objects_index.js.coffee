@@ -16,3 +16,4 @@ class Weblayer.Views.ObjectsIndex extends Backbone.View
   addObjectView: (object) =>
     (new Weblayer.Views.ObjectItem(model: object)).render().$el
       .appendTo(@$el)
+      .find('.collapse').collapse(parent: @$el)

@@ -19,4 +19,4 @@ suite 'Views.ObjectsIndex', ->
     collection.add({title: 'Test Add'})
 
     assert.include view.$el.text(), 'Test Add'
-
+    assert.ok view.$('.collapse').hasClass('in')
