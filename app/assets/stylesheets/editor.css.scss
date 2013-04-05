@@ -123,6 +123,13 @@
 .app-objects-new {
   margin: 0 12px;
 }
+.app-object-field {
+  margin: 10px 0 0;
+
+  .remove {
+    color: $black;
+  }
+}
 
 #app-preview {
   position: absolute;

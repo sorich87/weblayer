@@ -1,0 +1,6 @@
+<input class="span2" type="text" name="name" placeholder="Field Name"
+  value="<%= @field.get('name') %>" />
+<select class="input-small" name="type">
+  <%= @typeOptions @field %>
+</select>
+<a href="#" class="remove"><i class="icon-remove"></i></a>

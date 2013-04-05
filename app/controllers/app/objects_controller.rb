@@ -36,6 +36,6 @@ class App::ObjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def app_object_params
-      params.permit(:title, fields: [])
+      params.permit(:title, :class_name, fields: [:name, :type])
     end
 end

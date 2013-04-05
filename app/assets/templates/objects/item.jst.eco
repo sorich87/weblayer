@@ -6,6 +6,6 @@
 </div>
 <div id="<%= @object.get('class_name') %>" class="accordion-body collapse">
   <div class="accordion-inner">
-    Fields
+    <button class="btn btn-small app-objects-field-new"><i class="icon-plus"></i> Add Field</button>
   </div>
 </div>
