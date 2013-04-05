@@ -13,8 +13,8 @@ class App::Object < ActiveRecord::Base
   private
 
   def ensure_class_name
-    if self.title.present?
-      self.class_name ||= self.class.title_to_class_name(self.title)
+    if self.class_name.blank? && self.title.present?
+      self.class_name = self.class.title_to_class_name(self.title)
     end
   end
 end

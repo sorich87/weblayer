@@ -13,7 +13,7 @@ class App::ObjectTest < ActiveSupport::TestCase
   end
 
   test 'set default class name on save' do
-    object = App::Object.new(title: 'Test Title 1')
+    object = App::Object.new(title: 'Test Title 1', class_name: '')
     object.save!
     assert_equal 'TestTitle1', object.class_name
   end
