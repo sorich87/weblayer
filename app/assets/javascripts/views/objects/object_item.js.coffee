@@ -5,6 +5,7 @@ class Weblayer.Views.ObjectItem extends Backbone.View
   template: JST['objects/item']
 
   events:
+    'click .app-objects-delete': 'remove'
     'click .app-objects-field-new': 'addField'
 
   initialize: ->
@@ -27,3 +28,8 @@ class Weblayer.Views.ObjectItem extends Backbone.View
 
   save: =>
     @model.save()
+
+  remove: =>
+    @model.destroy()
+    @$el.remove()
+    @off()

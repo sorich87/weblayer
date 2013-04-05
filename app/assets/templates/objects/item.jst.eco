@@ -6,6 +6,7 @@
 </div>
 <div id="<%= @object.get('class_name') %>" class="accordion-body collapse">
   <div class="accordion-inner">
+    <button class="btn btn-small app-objects-delete"><i class="icon-remove"></i> Delete Object</button>
     <button class="btn btn-small app-objects-field-new"><i class="icon-plus"></i> Add Field</button>
   </div>
 </div>
