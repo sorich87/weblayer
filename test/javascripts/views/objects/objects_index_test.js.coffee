@@ -13,19 +13,10 @@ suite 'Views.ObjectsIndex', ->
     accordions = view.render().$('.accordion-heading')
     assert.lengthOf accordions, view.collection.length
 
-  test 'renders the objects on add, remove or reset', ->
-    spy = sinon.spy(Weblayer.Views.ObjectsIndex.prototype, 'render')
-
+  test 'adds a new object to the view rendering', ->
     collection = new Weblayer.Collections.Objects
     view = new Weblayer.Views.ObjectsIndex(collection: collection)
+    collection.add({title: 'Test Add'})
 
-    view.collection.trigger('add')
-    assert.ok spy.calledOnce
+    assert.include view.$el.text(), 'Test Add'
 
-    view.collection.trigger('remove')
-    assert.ok spy.calledTwice
-
-    view.collection.trigger('reset')
-    assert.ok spy.calledThrice
-
-    Weblayer.Views.ObjectsIndex.prototype.render.restore()

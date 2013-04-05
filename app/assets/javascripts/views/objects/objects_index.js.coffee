@@ -4,17 +4,15 @@ class Weblayer.Views.ObjectsIndex extends Backbone.View
   className: 'accordion'
 
   initialize: ->
-    @collection.on('add', @render)
-    @collection.on('remove', @render)
-    @collection.on('reset', @render)
+    @collection.on('add', @addObjectView)
 
   render: =>
     @$el.empty()
     @collection.each (object) =>
-      @subView(object).render().$el
+      (new Weblayer.Views.ObjectItem(model: object)).render().$el
         .appendTo(@$el)
     @
 
-  subView: (object) =>
-    @subViews ||= {}
-    @subViews[object.cid] ||= new Weblayer.Views.ObjectItem(model: object)
+  addObjectView: (object) =>
+    (new Weblayer.Views.ObjectItem(model: object)).render().$el
+      .appendTo(@$el)
