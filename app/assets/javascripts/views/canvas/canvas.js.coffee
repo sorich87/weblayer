@@ -37,5 +37,8 @@ class Weblayer.Views.Canvas extends Backbone.View
     false
 
   addCss: =>
-    $('<style id="canvas-css">').text(JST['canvas/css'])
-      .appendTo(@$('head'))
+    $style = $('<style id="canvas-css">').text(JST['canvas/css'])
+    @$('head')
+      .append('<link rel="stylesheet" href="/app/bootstrap.min.css" />')
+      .append('<link rel="stylesheet" href="/app/bootstrap-responsive.min.css" />')
+      .append($style)
