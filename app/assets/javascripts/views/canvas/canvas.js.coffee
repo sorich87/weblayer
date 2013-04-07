@@ -13,7 +13,6 @@ class Weblayer.Views.Canvas extends Backbone.View
 
   render: =>
     @setElement(@$el.contents().find('html'))
-    @$('*').on('dragenter', @dragEnd)
     @addCss()
     @
 
