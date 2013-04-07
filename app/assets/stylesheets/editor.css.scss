@@ -100,13 +100,12 @@
 #app-controls-header {
   @include clearfix;
   padding: 0 12px 20px;
-  font-size: $fontSizeLarge;
+  font-size: $baseFontSize * 1.75;
 
   .title {
     float: left;
   }
   .devices {
-    font-size: 1.6em;
     text-align: right;
 
     li {
