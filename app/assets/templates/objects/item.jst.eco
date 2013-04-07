@@ -1,6 +1,7 @@
 <div class="accordion-heading">
   <a class="accordion-toggle" data-toggle="collapse"
     data-parent="#app-objects-index" href="#<%= @object.get('class_name') %>">
+    <i class="icon-chevron-down"></i>
     <%= @object.get('title') %>
   </a>
 </div>
