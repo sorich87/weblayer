@@ -1,10 +1,12 @@
 class Weblayer.Views.ComponentsIndex extends Backbone.View
 
-  tagName: 'ul'
   className: 'app-components'
 
+  template: JST['components/index']
+
   render: =>
+    @$el.html(@template())
     @collection.each (component) =>
       (new Weblayer.Views.ComponentItem(model: component)).render().$el
-        .appendTo(@$el)
+        .appendTo(@$('ul'))
     @
