@@ -3,35 +3,26 @@ window.Weblayer =
   Collections: {}
   Views: {}
   Routers: {}
-
-  devices: [
-    {
-      title: 'PC',
-      name: 'desktop'
-      width: '100%',
-      active: true
-    },
-    {
-      title: 'Tablet',
-      name: 'tablet',
-      width: '768px',
-    },
-    {
-      title: 'Phone',
-      name: 'mobile-phone',
-      width: '480px',
-    }
-  ]
+  Defaults: {}
 
   initialize: (data) ->
-    @devices = new @Collections.Devices(@devices)
+    @devices = new @Collections.Devices(@Defaults.devices)
+    @components = new @Collections.Components(@Defaults.components)
     @objects = new @Collections.Objects(data.objects)
 
-    devicesIndexView = new @Views.DevicesIndex
+    canvasView = (new @Views.Canvas())
+    # To work properly, the canvas view needs to be rendered after
+    # the iframe was appended to the DOM
+    $iframe = canvasView.$el.appendTo('#app-preview')
+    canvasView.render()
+
+    (new @Views.DevicesIndex
       collection: @devices
-      $iframe: $('#app-preview iframe')
-    devicesIndexView.render()
-      .$el.appendTo("#app-controls-header")
+      $iframe: $iframe
+    ).render().$el.appendTo("#app-controls-header")
+
+    $('#app-controls-views')
+      .append((new @Views.ComponentsIndex(collection: @components)).render().$el)
 
     $('#app-controls-objects')
       .append((new @Views.ObjectsIndex(collection: @objects)).render().$el)

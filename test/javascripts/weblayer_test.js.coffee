@@ -9,6 +9,12 @@ suite 'Weblayer', ->
     assert.ok Weblayer.Views
 
   suite 'initialize()', ->
+    setup ->
+      @$header = $('<div id="app-controls-header">').appendTo('body')
+      @$objects = $('<div id="app-controls-objects">').appendTo('body')
+      @$views = $('<div id="app-controls-views">').appendTo('body')
+      @$preview = $('<div id="app-preview">').appendTo('body')
+
     test 'instantiates objects from data', ->
       data =
         objects: [
@@ -23,25 +29,31 @@ suite 'Weblayer', ->
 
     test 'instantiates and renders a DevicesIndex view', ->
       spy = sinon.spy(Weblayer.Views, 'DevicesIndex')
-      $div = $('<div id="app-controls-header">').appendTo('body')
 
       Weblayer.initialize({})
 
-      attributes =
-        collection: Weblayer.devices
-        $iframe: $('#app-preview iframe')
+      callArg = spy.getCall(0).args[0]
 
-      assert.ok spy.calledWith(attributes)
-      assert.lengthOf $div.children(), 1
+      assert.ok spy.calledOnce
+      assert.equal callArg.collection, Weblayer.devices
+      assert.equal callArg.$iframe.get(0), @$preview.children('iframe').get(0)
+      assert.lengthOf @$header.children(), 1
+
+    test 'instantiates and renders a ComponentsIndex view', ->
+      spy = sinon.spy(Weblayer.Views, 'ComponentsIndex')
+
+      Weblayer.initialize({})
+
+      assert.ok spy.calledWith(collection: Weblayer.components)
+      assert.lengthOf @$views.children('.app-components'), 1
 
     test 'instantiates and renders the object views', ->
       spyIndex = sinon.spy(Weblayer.Views, 'ObjectsIndex')
       spyNew = sinon.spy(Weblayer.Views, 'ObjectsNew')
-      $div = $('<div id="app-controls-objects">').appendTo('body')
 
       Weblayer.initialize({})
 
       assert.ok spyIndex.calledWith(collection: Weblayer.objects)
       assert.ok spyNew.calledWith(collection: Weblayer.objects)
-      assert.lengthOf $div.children('#app-objects-index'), 1
-      assert.lengthOf $div.children('.app-objects-new'), 1
+      assert.lengthOf @$objects.children('#app-objects-index'), 1
+      assert.lengthOf @$objects.children('.app-objects-new'), 1

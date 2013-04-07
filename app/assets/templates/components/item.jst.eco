@@ -1,0 +1,2 @@
+<a class="app-component-draggable" draggable="true"
+  title="<%= @component.get('description') %>"><%= @component.get('title') %></a>

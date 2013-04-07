@@ -15,9 +15,11 @@
 //= require turbolinks
 //= require bootstrap-tab
 //= require bootstrap-collapse
+//= require bootstrap-tooltip
 //= require underscore
 //= require backbone
 //= require weblayer
+//= require_tree ./defaults
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
