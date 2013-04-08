@@ -3,7 +3,8 @@
   box-shadow: 0px 0px 0px 2px #ffc40d;
   opacity: 0.1;
 }
-.app-over:not(body) {
+.app-over:not(body),
+.app-current:not(body) {
   box-shadow: 0px 0px 0px 2px #049cdb;
   opacity: 1;
 }

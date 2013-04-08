@@ -7,6 +7,8 @@ class Weblayer.Views.Canvas extends Backbone.View
     'dragleave': 'dragLeave'
     'dragover': 'dragOver'
     'drop': 'drop'
+    'click': 'selectElement'
+    'contextmenu': 'selectElement'
 
   initialize: ->
     Backbone.on('drag:end', @cleanup)
@@ -15,6 +17,10 @@ class Weblayer.Views.Canvas extends Backbone.View
     @setElement(@$el.contents().find('html'))
     @addCss()
     @
+
+  selectElement: (e) =>
+    @$('.app-current').removeClass('app-current')
+    $(e.target).addClass('app-current') unless e.target.tagName == 'BODY'
 
   dragEnter: (e) =>
     $(e.target).addClass('app-over')

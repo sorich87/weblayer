@@ -36,3 +36,29 @@ suite 'Weblayer.Views.Canvas', ->
     @view.cleanup()
 
     assert.isFalse $div.hasClass('app-over')
+
+  test 'selectElement() adds .app-current class to the element', ->
+    $target = $('<div>')
+
+    @view
+      .setElement('<div><div class="app-current"></div></div>')
+      .$el.append($target)
+
+    e = new $.Event('click', target: $target.get(0))
+    @view.selectElement(e)
+
+    assert.isTrue $target.hasClass('app-current')
+    assert.lengthOf @view.$('.app-current'), 1
+
+  test "selectElement() doesn't add .app-current class to the body", ->
+    $target = $('<body>')
+
+    @view
+      .setElement('<div><div class="app-current"></div></div>')
+      .$el.append($target)
+
+    e = new $.Event('click', target: $target.get(0))
+    @view.selectElement(e)
+
+    assert.isFalse $target.hasClass('app-current')
+    assert.lengthOf @view.$('.app-current'), 0
