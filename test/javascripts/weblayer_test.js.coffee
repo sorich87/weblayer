@@ -57,3 +57,13 @@ suite 'Weblayer', ->
       assert.ok spyNew.calledWith(collection: Weblayer.objects)
       assert.lengthOf @$objects.children('#app-objects-index'), 1
       assert.lengthOf @$objects.children('.app-objects-new'), 1
+
+    test 'instantiates and renders a ContextMenu view', ->
+      spy = sinon.spy(Weblayer.Views, 'ContextMenu')
+
+      Weblayer.initialize({})
+
+      callArg = spy.getCall(0).args[0]
+
+      assert.isTrue callArg.$iframe.is(@$preview.children('iframe'))
+      assert.lengthOf $('body').children('.context-menu'), 1

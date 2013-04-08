@@ -27,3 +27,6 @@ window.Weblayer =
     $('#app-controls-objects')
       .append((new @Views.ObjectsIndex(collection: @objects)).render().$el)
       .append((new @Views.ObjectsNew(collection: @objects)).render().$el)
+
+    $('body')
+      .append((new @Views.ContextMenu($iframe: $iframe)).render().$el)
