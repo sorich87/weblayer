@@ -3,10 +3,10 @@ class Weblayer.Views.Canvas extends Backbone.View
   tagName: 'iframe'
 
   events:
-    'dragenter *': 'dragEnter'
-    'dragleave *': 'dragLeave'
-    'dragover *': 'dragOver'
-    'drop *': 'drop'
+    'dragenter': 'dragEnter'
+    'dragleave': 'dragLeave'
+    'dragover': 'dragOver'
+    'drop': 'drop'
 
   initialize: ->
     Backbone.on('drag:end', @cleanup)
