@@ -6,59 +6,62 @@ suite 'Weblayer.Views.Canvas', ->
     @view = new Weblayer.Views.Canvas()
     @view.$el.appendTo('body')
 
-  test 'render() changes the view element to the <html> tag in the iframe', ->
-    $el = @view.$el
-    @view.render()
+  suite 'render()', ->
 
-    assert.equal @view.el, $el.contents().find('html').get(0)
+    test 'changes the view element to the <html> tag in the iframe', ->
+      $el = @view.$el
+      @view.render()
 
-  test 'render() adds the <style> tag', ->
-    @view.render()
+      assert.equal @view.el, $el.contents().find('html').get(0)
 
-    assert.lengthOf @view.$('#canvas-css'), 1
+    test 'adds the <style> tag', ->
+      @view.render()
 
-  test "dragEnter() adds .app-over class to it's target", ->
-    $div = $('<div>')
-    e = $.Event('dragenter', target: $div.get(0))
-    @view.dragEnter(e)
+      assert.lengthOf @view.$('#canvas-css'), 1
 
-    assert.isTrue $div.hasClass('app-over')
+  suite 'dragEnter()', ->
 
-  test "dragLeave() adds .app-over class to it's target", ->
-    $div = $('<div class="app-over">')
-    e = $.Event('dragleave', target: $div.get(0))
-    @view.dragLeave(e)
+    test "adds .app-over class to it's target", ->
+      @view.setup('<div></div>')
+      $div = $('<div>')
+      e = $.Event('dragenter', target: $div.get(0))
+      @view.dragEnter(e)
 
-    assert.isFalse $div.hasClass('app-over')
+      assert.isTrue $div.hasClass('app-over')
 
-  test 'cleanup() removes .app-over class from all children elements', ->
-    $div = $('<div class="app-over">').appendTo(@view.render().$el)
-    @view.cleanup()
+  suite 'cleanup()', ->
 
-    assert.isFalse $div.hasClass('app-over')
+    test 'removes .app-over class from all children elements', ->
+      @view.setup('<div></div>')
+      $div = $('<div class="app-over">').appendTo(@view.render().$el)
+      @view.cleanup()
 
-  test 'selectElement() adds .app-current class to the element', ->
-    $target = $('<div>')
+      assert.isFalse $div.hasClass('app-over')
 
-    @view
-      .setElement('<div><div class="app-current"></div></div>')
-      .$el.append($target)
+  suite 'selectElement()', ->
 
-    e = new $.Event('click', target: $target.get(0))
-    @view.selectElement(e)
+    test 'adds .app-current class to the element', ->
+      $target = $('<div>')
 
-    assert.isTrue $target.hasClass('app-current')
-    assert.lengthOf @view.$('.app-current'), 1
+      @view
+        .setElement('<div><div class="app-current"></div></div>')
+        .$el.append($target)
 
-  test "selectElement() doesn't add .app-current class to the body", ->
-    $target = $('<body>')
+      e = new $.Event('click', target: $target.get(0))
+      @view.selectElement(e)
 
-    @view
-      .setElement('<div><div class="app-current"></div></div>')
-      .$el.append($target)
+      assert.isTrue $target.hasClass('app-current')
+      assert.lengthOf @view.$('.app-current'), 1
 
-    e = new $.Event('click', target: $target.get(0))
-    @view.selectElement(e)
+    test "doesn't add .app-current class to the body", ->
+      $target = $('<body>')
 
-    assert.isFalse $target.hasClass('app-current')
-    assert.lengthOf @view.$('.app-current'), 0
+      @view
+        .setElement('<div><div class="app-current"></div></div>')
+        .$el.append($target)
+
+      e = new $.Event('click', target: $target.get(0))
+      @view.selectElement(e)
+
+      assert.isFalse $target.hasClass('app-current')
+      assert.lengthOf @view.$('.app-current'), 0

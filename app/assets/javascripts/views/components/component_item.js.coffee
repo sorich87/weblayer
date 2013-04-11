@@ -17,9 +17,12 @@ class Weblayer.Views.ComponentItem extends Backbone.View
 
   dragStart: (e) =>
     @$('a').tooltip('hide')
-    html = @model.get('html')
-    e.originalEvent.dataTransfer.effectAllowed = 'move'
-    e.originalEvent.dataTransfer.setData('html', html)
 
-  dragEnd: (e) =>
+    $dragging = $(@model.get('html'))
+    Backbone.trigger('drag:start', $dragging)
+
+    e.originalEvent.dataTransfer.effectAllowed = 'move'
+    e.originalEvent.dataTransfer.setData('text', 'dragging')
+
+  dragEnd: () =>
     Backbone.trigger('drag:end')
