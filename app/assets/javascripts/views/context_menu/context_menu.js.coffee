@@ -12,7 +12,7 @@ class Weblayer.Views.ContextMenu extends Backbone.View
     @$iframe.contents()
       .on('contextmenu', '*', @show)
       .on('click', @hide)
-    $(document).on('click', @hide)
+    $(document).on('click contextmenu', @hide)
 
   render: =>
     @collection.each (item) =>
